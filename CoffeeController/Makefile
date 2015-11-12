@@ -35,7 +35,7 @@ error:
 	$(error Invalid configuration, please check your inputs)
 endif
 
-SOURCEFILES := CoffeeController.cpp Speaker.cpp
+SOURCEFILES := CoffeeController.cpp DistanceSensor.cpp LED.cpp RF.cpp Speaker.cpp
 EXTERNAL_LIBS := 
 EXTERNAL_LIBS_COPIED := $(foreach lib, $(EXTERNAL_LIBS),$(BINARYDIR)/$(notdir $(lib)))
 

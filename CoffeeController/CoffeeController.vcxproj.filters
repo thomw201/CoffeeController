@@ -25,6 +25,15 @@
     <ClCompile Include="Speaker.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
+    <ClCompile Include="RF.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="LED.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="DistanceSensor.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Makefile" />
@@ -37,6 +46,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Speaker.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="RF.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="LED.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="DistanceSensor.h">
       <Filter>Header files</Filter>
     </ClInclude>
   </ItemGroup>

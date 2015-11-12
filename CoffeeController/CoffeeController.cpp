@@ -3,9 +3,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "Speaker.h"
+#include "RF.h"
 using namespace std;
 
 Speaker speaker(16);
+RF rf(15);
 
 bool init() {
 	// load wiringPi
@@ -23,7 +25,14 @@ int main(int argc, char *argv[])
 		speaker.playErrorTune();
 		exit(0);
 	}
-	speaker.playReadytune();
+	speaker.playStopTune();
+	delay(50);
+	rf.switchOn();
+	for (size_t i = 0; i < 5; i++)
+	{
+		delay(500);
+	}
+	rf.switchOff();
 	cout << "hello" << endl;
 	return 0;
 }

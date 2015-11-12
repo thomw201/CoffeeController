@@ -1,0 +1,3 @@
+Debug/LED.o: LED.cpp \
+ d:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\stdc-predef.h \
+ LED.h
