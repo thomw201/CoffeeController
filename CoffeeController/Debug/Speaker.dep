@@ -1,0 +1,20 @@
+Debug/Speaker.o: Speaker.cpp \
+ d:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\stdc-predef.h \
+ Speaker.h \
+ d:\sysgcc\raspberry\bin\../arm-linux-gnueabihf/sysroot/usr/local/include/wiringPi.h \
+ d:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\stdio.h \
+ d:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\features.h \
+ d:\sysgcc\raspberry\arm-linux-gnueabihf\include\sys\cdefs.h \
+ d:\sysgcc\raspberry\arm-linux-gnueabihf\include\bits\wordsize.h \
+ d:\sysgcc\raspberry\arm-linux-gnueabihf\include\gnu\stubs.h \
+ d:\sysgcc\raspberry\arm-linux-gnueabihf\include\gnu\stubs-hard.h \
+ d:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\4.9\include\stddef.h \
+ d:\sysgcc\raspberry\arm-linux-gnueabihf\include\bits\types.h \
+ d:\sysgcc\raspberry\arm-linux-gnueabihf\include\bits\typesizes.h \
+ d:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\libio.h \
+ d:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\_g_config.h \
+ d:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\wchar.h \
+ d:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\4.9\include\stdarg.h \
+ d:\sysgcc\raspberry\arm-linux-gnueabihf\include\bits\stdio_lim.h \
+ d:\sysgcc\raspberry\arm-linux-gnueabihf\include\bits\sys_errlist.h \
+ d:\sysgcc\raspberry\bin\../arm-linux-gnueabihf/sysroot/usr/local/include/softTone.h
