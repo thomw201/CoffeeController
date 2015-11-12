@@ -109,4 +109,4 @@ Debug/CoffeeController.o: CoffeeController.cpp \
  d:\sysgcc\raspberry\arm-linux-gnueabihf\include\sys\sysmacros.h \
  d:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\alloca.h \
  d:\sysgcc\raspberry\arm-linux-gnueabihf\include\bits\stdlib-float.h \
- Speaker.h RF.h
+ Speaker.h RF.h DistanceSensor.h
