@@ -12,6 +12,29 @@ RF rf(15);
 DistanceSensor distanceSensor(4, 5);
 time_t currentTime;
 int currentDistance;
+int noWater = 9;
+
+bool turnOn()
+{
+	if (currentDistance < 10)
+	{
+		speaker.playStartTune();
+		delay(100);
+		rf.switchOn();
+		delay(100);
+		cout << "Started making coffee" << endl;
+		//check if coffee is done every 500ms
+		while (currentDistance < 9)
+		{
+			delay(500);
+		}
+		//play ready melody-
+		return true;
+	}
+	cout << "Machine is open" << endl;
+	speaker.playErrorTune();
+	return false;
+}
 
 PI_THREAD(timer)
 {
@@ -31,13 +54,15 @@ bool init() {
 		printf("WiringPi setup failed.");
 		return false;
 	}
-	currentDistance = 9;
 	//create listen and timer threads
 	int x = 0;
 	x += piThreadCreate(timer);
 	//x += piThreadCreate(listen);
-	if (x != 0)
+	if (x != 0){
+		printf("Error starting thread.");
 		return false;
+	}
+	delay(100);
 	return true;
 }
 
@@ -45,18 +70,12 @@ int main(int argc, char *argv[])
 {
 	if (!init()) {
 		speaker.playErrorTune();
+		cout << "init failed" << endl;
 		exit(0);
 	}
-	speaker.playReadytune();
-	delay(50);
-	rf.switchOn();
-	delay(50);
-	while (currentDistance < 100)
-	{
-		delay(50);
-		cout << currentDistance << endl;
-	}
-	speaker.playErrorTune();
+	turnOn();
+
+	delay(1000);
 	rf.switchOff();
 	return 0;
 }

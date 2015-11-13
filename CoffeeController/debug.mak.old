@@ -5,17 +5,17 @@
 BINARYDIR := Debug
 
 #Toolchain
-CC := gcc
-CXX := g++
+CC := D:/SysGCC/raspberry/bin/arm-linux-gnueabihf-gcc.exe
+CXX := D:/SysGCC/raspberry/bin/arm-linux-gnueabihf-g++.exe
 LD := $(CXX)
-AR := ar
-OBJCOPY := objcopy
+AR := D:/SysGCC/raspberry/bin/arm-linux-gnueabihf-ar.exe
+OBJCOPY := D:/SysGCC/raspberry/bin/arm-linux-gnueabihf-objcopy.exe
 
 #Additional flags
-PREPROCESSOR_MACROS := DEBUG
-INCLUDE_DIRS := 
+PREPROCESSOR_MACROS := 
+INCLUDE_DIRS := =/usr/local/include
 LIBRARY_DIRS := 
-LIBRARY_NAMES := 
+LIBRARY_NAMES := pthread wiringPi
 ADDITIONAL_LINKER_INPUTS := 
 MACOS_FRAMEWORKS := 
 LINUX_PACKAGES := 
