@@ -46,6 +46,7 @@
     <None Include="release.mak">
       <Filter>Make files</Filter>
     </None>
+    <None Include="RaspiCoffeeDB.db" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Speaker.h">

@@ -71,6 +71,7 @@
   <ItemGroup>
     <None Include="debug.mak" />
     <None Include="Makefile" />
+    <None Include="RaspiCoffeeDB.db" />
     <None Include="release.mak" />
   </ItemGroup>
   <ItemGroup>

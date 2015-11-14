@@ -5,16 +5,19 @@
 #include "Speaker.h"
 #include "RF.h"
 #include "DistanceSensor.h"
+#include "Database.h"
 using namespace std;
 
 Speaker speaker(16);
 RF rf(15);
 DistanceSensor distanceSensor(4, 5);
+Database db;
 time_t currentTime;
 int currentDistance;
 int noWater = 9;
 
-bool turnOn()
+
+bool switchOn()
 {
 	if (currentDistance < 10)
 	{
@@ -23,6 +26,7 @@ bool turnOn()
 		rf.switchOn();
 		delay(100);
 		cout << "Started making coffee" << endl;
+		db.writeLog(1, "Started making coffee.", distanceSensor.getDistance(), 0, 0, 0, speaker.getSpeakerStatus());
 		//check if coffee is done every 500ms
 		while (currentDistance < 9)
 		{
@@ -31,7 +35,8 @@ bool turnOn()
 		//play ready melody-
 		return true;
 	}
-	cout << "Machine is open" << endl;
+	cout << "Could not start because the machine is opened." << endl;
+	db.writeLog(3, "Could not start because the machine is opened.", distanceSensor.getDistance(), 0, 0, 0, speaker.getSpeakerStatus());
 	speaker.playErrorTune();
 	return false;
 }
@@ -52,6 +57,7 @@ bool init() {
 	if (wiringPiSetup() == -1)
 	{
 		printf("WiringPi setup failed.");
+		db.writeLog(3, "WiringPi setup failed.", distanceSensor.getDistance(), 0, 0, 0, speaker.getSpeakerStatus());
 		return false;
 	}
 	//create listen and timer threads
@@ -60,9 +66,10 @@ bool init() {
 	//x += piThreadCreate(listen);
 	if (x != 0){
 		printf("Error starting thread.");
+		db.writeLog(3, "Error starting thread.", distanceSensor.getDistance(), 0, 0, 0, speaker.getSpeakerStatus());
 		return false;
 	}
-	delay(100);
+	delay(200);
 	return true;
 }
 
@@ -73,9 +80,10 @@ int main(int argc, char *argv[])
 		cout << "init failed" << endl;
 		exit(0);
 	}
-	turnOn();
-
-	delay(1000);
+	speaker.speakerEnabled(true);
+	switchOn();
+	delay(5000);
+	db.writeLog(2, "Turning off", distanceSensor.getDistance(), 0, 0, 0, speaker.getSpeakerStatus());
 	rf.switchOff();
 	return 0;
 }

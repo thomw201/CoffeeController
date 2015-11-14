@@ -15,7 +15,7 @@ OBJCOPY := D:/SysGCC/raspberry/bin/arm-linux-gnueabihf-objcopy.exe
 PREPROCESSOR_MACROS := 
 INCLUDE_DIRS := =/usr/local/include
 LIBRARY_DIRS := 
-LIBRARY_NAMES := pthread wiringPi
+LIBRARY_NAMES := pthread wiringPi sqlite3
 ADDITIONAL_LINKER_INPUTS := 
 MACOS_FRAMEWORKS := 
 LINUX_PACKAGES := 
