@@ -19,7 +19,7 @@ int noWater = 9;
 
 bool switchOn()
 {
-	if (currentDistance < 10)
+	if (currentDistance < 22)
 	{
 		speaker.playStartTune();
 		delay(100);
@@ -27,9 +27,12 @@ bool switchOn()
 		delay(100);
 		cout << "Started making coffee" << endl;
 		db.writeLog(1, "Started making coffee.", distanceSensor.getDistance(), 0, 0, 0, speaker.getSpeakerStatus());
+		delay(500);
+		cout << "Water: " << currentDistance << endl;
 		//check if coffee is done every 500ms
-		while (currentDistance < 9)
+		while (currentDistance < 50)
 		{
+			cout << "Water: " << currentDistance << endl;
 			delay(500);
 		}
 		//play ready melody-
@@ -41,7 +44,7 @@ bool switchOn()
 	return false;
 }
 
-PI_THREAD(timer)
+PI_THREAD(update)
 {
 	while (true)
 	{
@@ -60,9 +63,9 @@ bool init() {
 		db.writeLog(3, "WiringPi setup failed.", distanceSensor.getDistance(), 0, 0, 0, speaker.getSpeakerStatus());
 		return false;
 	}
-	//create listen and timer threads
+	//create listen and update threads
 	int x = 0;
-	x += piThreadCreate(timer);
+	x += piThreadCreate(update);
 	//x += piThreadCreate(listen);
 	if (x != 0){
 		printf("Error starting thread.");
@@ -77,13 +80,18 @@ int main(int argc, char *argv[])
 {
 	if (!init()) {
 		speaker.playErrorTune();
-		cout << "init failed" << endl;
+		db.writeLog(3, "Failed to initalize, exitting...", distanceSensor.getDistance(), 0, 0, 0, speaker.getSpeakerStatus());
+		cout << "Failed to initalize, exitting..." << endl;
 		exit(0);
 	}
 	speaker.speakerEnabled(true);
-	switchOn();
-	delay(5000);
-	db.writeLog(2, "Turning off", distanceSensor.getDistance(), 0, 0, 0, speaker.getSpeakerStatus());
-	rf.switchOff();
+	while (true)
+	{
+		delay(500);
+	}
+	//switchOn();
+	//delay(5000);
+	//db.writeLog(2, "Turning off", distanceSensor.getDistance(), 0, 0, 0, speaker.getSpeakerStatus());
+	//rf.switchOff();
 	return 0;
 }

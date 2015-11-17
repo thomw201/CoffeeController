@@ -1,5 +1,5 @@
 #include "DistanceSensor.h"
-#include "wIRingPi.h"
+#include "wiringPi.h"
 
 DistanceSensor::DistanceSensor(int trig, int echo)
 {
