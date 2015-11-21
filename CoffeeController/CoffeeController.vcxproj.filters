@@ -37,6 +37,9 @@
     <ClCompile Include="Database.cpp">
       <Filter>Source files</Filter>
     </ClCompile>
+    <ClCompile Include="dateTime.cpp">
+      <Filter>Source files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Makefile" />
@@ -62,6 +65,9 @@
       <Filter>Header files</Filter>
     </ClInclude>
     <ClInclude Include="Database.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="dateTime.h">
       <Filter>Header files</Filter>
     </ClInclude>
   </ItemGroup>

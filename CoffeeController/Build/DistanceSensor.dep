@@ -1,0 +1,2 @@
+Build/DistanceSensor.o: DistanceSensor.cpp /usr/include/stdc-predef.h \
+ DistanceSensor.h /usr/local/include/wiringPi.h

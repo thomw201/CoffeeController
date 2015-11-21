@@ -63,6 +63,7 @@
   <ItemGroup>
     <ClCompile Include="CoffeeController.cpp" />
     <ClCompile Include="Database.cpp" />
+    <ClCompile Include="dateTime.cpp" />
     <ClCompile Include="DistanceSensor.cpp" />
     <ClCompile Include="LED.cpp" />
     <ClCompile Include="RF.cpp" />
@@ -76,6 +77,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Database.h" />
+    <ClInclude Include="dateTime.h" />
     <ClInclude Include="DistanceSensor.h" />
     <ClInclude Include="LED.h" />
     <ClInclude Include="RF.h" />

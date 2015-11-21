@@ -1,0 +1,2 @@
+Build/RF.o: RF.cpp /usr/include/stdc-predef.h RF.h \
+ /usr/local/include/wiringPi.h

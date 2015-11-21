@@ -2,19 +2,21 @@
 #include <wiringPi.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <vector>
 #include "Speaker.h"
 #include "RF.h"
 #include "DistanceSensor.h"
 #include "Database.h"
+#include "dateTime.h"
 using namespace std;
 
 Speaker speaker(16);
 RF rf(15);
 DistanceSensor distanceSensor(4, 5);
 Database db;
-time_t currentTime;
+dateTime datetime;
+vector<int> todaysProfiles;
 int currentDistance;
-int noWater = 9;
 
 
 bool switchOn()
@@ -30,11 +32,11 @@ bool switchOn()
 		delay(500);
 		cout << "Water: " << currentDistance << endl;
 		//check if coffee is done every 500ms
-		while (currentDistance < 50)
-		{
-			cout << "Water: " << currentDistance << endl;
-			delay(500);
-		}
+		//while (currentDistance < 50)
+		//{
+		//	cout << "Water: " << currentDistance << endl;
+		//	delay(500);
+		//}
 		//play ready melody-
 		return true;
 	}
@@ -48,8 +50,7 @@ PI_THREAD(update)
 {
 	while (true)
 	{
-		//currentTime = time(NULL);
-		time(&currentTime);
+		datetime.updateTime();
 		currentDistance = distanceSensor.getDistance();
 		delay(100);
 	}
@@ -84,14 +85,19 @@ int main(int argc, char *argv[])
 		cout << "Failed to initalize, exitting..." << endl;
 		exit(0);
 	}
-	speaker.speakerEnabled(true);
-	while (true)
+	speaker.speakerEnabled(false);
+	/*speaker.playReadytune();*/
+	cout << datetime.getTimeString() << endl;
+	cout << "the day is :" << datetime.getDay() << endl;
+	switchOn();
+	todaysProfiles = db.getProfileByDay(1);
+	for (size_t i = 0; i < todaysProfiles.size(); i++)
 	{
-		delay(500);
+		cout << "Loaded profiles; " << todaysProfiles.at(i);
 	}
-	//switchOn();
-	//delay(5000);
-	//db.writeLog(2, "Turning off", distanceSensor.getDistance(), 0, 0, 0, speaker.getSpeakerStatus());
-	//rf.switchOff();
+	delay(2000);
+	db.writeLog(1, "Switching off", distanceSensor.getDistance(), 0, 0, 0, speaker.getSpeakerStatus());
+	delay(100);
+	rf.switchOff();
 	return 0;
 }

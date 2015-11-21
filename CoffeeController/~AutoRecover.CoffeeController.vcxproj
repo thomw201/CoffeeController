@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{AF819651-21F6-44E4-B864-3E501292916F}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <NMakeIncludeSearchPath>d:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\local\include;d:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\4.9;d:\sysgcc\raspberry\arm-linux-gnueabihf\include\c++\4.9\backward;d:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\4.9\include;d:\sysgcc\raspberry\lib\gcc\arm-linux-gnueabihf\4.9\include-fixed;d:\sysgcc\raspberry\arm-linux-gnueabihf\include;d:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\arm-linux-gnueabihf;d:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include;$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
+    <NMakeForcedIncludes>$(ProjectDir)\gcc_Debug.h;$(VISUALGDB_DIR)\gcc_compat.h;$(NMakeForcedIncludes)</NMakeForcedIncludes>
+    <NMakeBuildCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /build "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeBuildCommandLine>
+    <NMakeCleanCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /clean "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeCleanCommandLine>
+    <NMakeReBuildCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /rebuild "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeReBuildCommandLine>
+    <NMakeOutput>$(ProjectDir)CoffeeController-Debug.vgdbsettings</NMakeOutput>
+    <IncludePath />
+    <ReferencePath />
+    <LibraryPath />
+    <NMakePreprocessorDefinitions>__VisualGDB_CFG_Debug;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <NMakeIncludeSearchPath>$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\192.168.1.125\0000\include\c++\4.9;$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\192.168.1.125\0000\include\arm-linux-gnueabihf\c++\4.9;$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\192.168.1.125\0000\include\c++\4.9\backward;$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\192.168.1.125\0001\include;$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\192.168.1.125\0003\include;$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\192.168.1.125\0002\include-fixed;$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\192.168.1.125\0000\include\arm-linux-gnueabihf;$(LOCALAPPDATA)\VisualGDB\RemoteSourceCache\192.168.1.125\0000\include;$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
+    <NMakeForcedIncludes>$(ProjectDir)\gcc_Release.h;$(VISUALGDB_DIR)\gcc_compat.h;$(NMakeForcedIncludes)</NMakeForcedIncludes>
+    <NMakePreprocessorDefinitions>__VisualGDB_CFG_Release;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+    <NMakeBuildCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /build "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeBuildCommandLine>
+    <NMakeCleanCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /clean "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeCleanCommandLine>
+    <NMakeReBuildCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /rebuild "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeReBuildCommandLine>
+    <NMakeOutput>$(ProjectDir)CoffeeController-Release.vgdbsettings</NMakeOutput>
+    <IncludePath />
+    <ReferencePath />
+    <LibraryPath />
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="CoffeeController.cpp" />
+    <ClCompile Include="Database.cpp" />
+    <ClCompile Include="dateTime.cpp" />
+    <ClCompile Include="DistanceSensor.cpp" />
+    <ClCompile Include="LED.cpp" />
+    <ClCompile Include="RF.cpp" />
+    <ClCompile Include="Speaker.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="debug.mak" />
+    <None Include="Makefile" />
+    <None Include="RaspiCoffeeDB.db" />
+    <None Include="release.mak" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Database.h" />
+    <ClInclude Include="dateTime.h" />
+    <ClInclude Include="DistanceSensor.h" />
+    <ClInclude Include="LED.h" />
+    <ClInclude Include="RF.h" />
+    <ClInclude Include="Speaker.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
