@@ -1,4 +1,0 @@
-Debug/RF.o: RF.cpp \
- d:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\stdc-predef.h \
- RF.h \
- d:\sysgcc\raspberry\bin\../arm-linux-gnueabihf/sysroot/usr/local/include/wiringPi.h

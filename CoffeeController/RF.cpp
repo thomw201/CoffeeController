@@ -35,6 +35,7 @@ void RF::switchOff(){
 * d = data
 */
 void RF::sendSignal(unsigned long signal, unsigned short rfPin) {
+	delay(100);
 	unsigned int periodusec = (unsigned long)signal >> 23;
 	unsigned short repeats = 5 << (((unsigned long)signal >> 20) & 7); // 7 = B111
 	signal = signal & 0xfffff; //truncate to 20 bit
@@ -96,6 +97,7 @@ void RF::sendSignal(unsigned long signal, unsigned short rfPin) {
 		delayMicroseconds(periodusec);
 		digitalWrite(rfPin, LOW);
 		delayMicroseconds(periodusec * 31);
+		delay(100);
 	}
 }
 

@@ -2,10 +2,11 @@
 class LED
 {
 public:
-	LED();
+	LED(int Rpin, int Gpin, int Bpin);
 	~LED();
+	void Blink();
 private:
-	int ledPin;
 	bool ledIsEnabled;
+	int rpin, gpin, bpin;
 };
 

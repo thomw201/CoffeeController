@@ -1,1 +1,2 @@
-Build/LED.o: LED.cpp /usr/include/stdc-predef.h LED.h
+Build/LED.o: LED.cpp /usr/include/stdc-predef.h LED.h \
+ /usr/local/include/wiringPi.h

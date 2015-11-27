@@ -1,4 +1,0 @@
-Debug/DistanceSensor.o: DistanceSensor.cpp \
- d:\sysgcc\raspberry\arm-linux-gnueabihf\sysroot\usr\include\stdc-predef.h \
- DistanceSensor.h \
- d:\sysgcc\raspberry\bin\../arm-linux-gnueabihf/sysroot/usr/local/include/wIRingPi.h
