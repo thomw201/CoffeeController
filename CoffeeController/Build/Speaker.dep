@@ -1,4 +1,4 @@
-Build/Speaker.o: Speaker.cpp /usr/include/stdc-predef.h Speaker.h \
+Build/Speaker.o: Speaker.cpp /usr/include/stdc-predef.h Speaker.h LED.h \
  /usr/local/include/wiringPi.h /usr/include/stdio.h \
  /usr/include/features.h /usr/include/arm-linux-gnueabihf/sys/cdefs.h \
  /usr/include/arm-linux-gnueabihf/bits/wordsize.h \

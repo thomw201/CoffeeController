@@ -3,11 +3,6 @@
 #include <stdio.h>
 #include <softTone.h>
 
-int scale[8] = { 262, 294, 330, 349, 392, 440, 494, 525 };
-int bla[7] = { 400, 500, 600, 700, 600, 700, 0 };
-int bladelay[7] = { 300, 300, 300, 300, 200, 500 };
-
-
 Speaker::Speaker(int GpiospeakerPin)
 {
 	wiringPiSetup();
@@ -24,7 +19,6 @@ Speaker::~Speaker()
 void Speaker::playReadytune() {
 	if (speakerIsEnabled)
 	{
-		//int frequencies[10] = { 261, 277, 294, 311, 330, 349, 370, 392, 415, 440 };
 		int readyTune[23] = { 659, 659, 0, 659, 0, 523, 659, 0, 784, 0, 0, 0, 392, 0, 0, 0, 523, 0, 0, 392, 0, 0, 330 };
 		for (int i = 0; i < 13; ++i)
 		{
@@ -36,7 +30,7 @@ void Speaker::playReadytune() {
 }
 
 
-void Speaker::playStartTune() {
+void Speaker::playStartTune(LED led) {
 	softToneCreate(speakerPin);
 	if (speakerIsEnabled)
 	{
@@ -44,8 +38,10 @@ void Speaker::playStartTune() {
 		int delayTimes[6] = { 300, 300, 300, 300, 200, 500 };
 		for (size_t i = 0; i < 7; i++)
 		{
+			led.intToColor(onTune[i]);
 			softToneWrite(speakerPin, onTune[i]);
 			delay(delayTimes[i]);
+			led.LEDsOff();
 		}
 	}
 }
@@ -57,23 +53,24 @@ void Speaker::playStopTune() {
 		for (size_t i = 0; i < 3; i++)
 		{
 			softToneWrite(speakerPin, 2000);
-			softToneStop(speakerPin);
 			delay(300);
 		}
 		softToneStop(speakerPin);
 	}
 }
 
-void Speaker::playErrorTune() {
+void Speaker::playErrorTune(LED led) {
 	if (speakerIsEnabled)
 	{
 		for (size_t i = 0; i < 3; i++)
 		{
+			led.setColor('R');
 			softToneWrite(speakerPin, 100);
 			delay(300);
 			softToneWrite(speakerPin, 800);
 			delay(100);
 			softToneWrite(speakerPin, 0);
+			led.LEDsOff();
 			delay(500);
 		}
 	}

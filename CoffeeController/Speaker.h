@@ -1,4 +1,6 @@
 #pragma once
+#include "LED.h"
+
 class Speaker
 {
 public:
@@ -6,9 +8,9 @@ public:
 	~Speaker();
 	void playReadytune();
 	void test();
-	void playStartTune();
+	void playStartTune(LED led);
 	void playStopTune();
-	void playErrorTune();
+	void playErrorTune(LED led);
 	void speakerEnabled(bool onoff);
 	bool getSpeakerStatus();
 private:

@@ -33,7 +33,20 @@ vector<string> Database::getProfileNames(){
 	return profileNames;
 }
 
-vector<int> Database::getProfileByDay(string day){
+vector<int> Database::getProfileTimes(){
+	return profileTimes;
+}
+
+int Database::getStayOnTime(int id){
+	sqlite3_prepare(db, "SELECT Stayonfor FROM Profiles WHERE ID = ?", -1, &stmt, NULL);
+	sqlite3_bind_int(stmt, 1, id);
+	sqlite3_step(stmt);
+	int Stayontime = sqlite3_column_int(stmt, 0);
+	sqlite3_finalize(stmt);
+	return Stayontime;
+}
+
+vector<int> Database::getProfilesByDay(string day){
 	//clear the vector before writing new query results into it
 	profileIDs.clear();
 	profileNames.clear();
@@ -46,8 +59,9 @@ vector<int> Database::getProfileByDay(string day){
 	while (sqlite3_column_int(stmt, 0))
 	{
 		profileIDs.push_back(sqlite3_column_int(stmt, 0));
-		//cache profilenames for later use
+		//cache profilenames/times for later use
 		profileNames.push_back(string((const char*)sqlite3_column_text(stmt, 1)));
+		profileTimes.push_back(sqlite3_column_int(stmt, 3));
 		sqlite3_step(stmt);
 	}
 	sqlite3_finalize(stmt);
