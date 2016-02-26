@@ -11,6 +11,8 @@ public:
 	void playStartTune(LED led);
 	void playStopTune();
 	void playErrorTune(LED led);
+	void playOpenTune();
+	void playClosedTune(LED led);
 	void speakerEnabled(bool onoff);
 	bool getSpeakerStatus();
 private:

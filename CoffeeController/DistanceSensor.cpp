@@ -1,5 +1,9 @@
 #include "DistanceSensor.h"
 #include "wiringPi.h"
+#include <iostream>
+using namespace std;
+
+pthread_mutex_t distMutex;
 
 DistanceSensor::DistanceSensor(int trig, int echo)
 {
@@ -23,16 +27,12 @@ int DistanceSensor::getDistance(){
 }
 
 bool DistanceSensor::deviceIsOpen(){
-	if (validateDistance())
-	{
-		if (measuredDistances.at(0) > 30)
+		if (validatedDistance > 30)
 		{
 			return true;
 		}
 		else
 			return false;
-	}
-	return false;
 }
 
 void DistanceSensor::setStartDistance(){
@@ -61,9 +61,8 @@ void DistanceSensor::updateDistance(){
 	long startTime = micros();
 	while (digitalRead(ECHO) == HIGH);
 	long travelTime = micros() - startTime;
-
-	//Get distance in cm and insert it into the vector
-	measuredDistances.insert(measuredDistances.begin(), travelTime / 58);
+		//Get distance in cm and insert it into the vector
+		measuredDistances.insert(measuredDistances.begin(), travelTime / 58);
 	//ensure there's always only 2 values in the vector as cleanup
 	measuredDistances.resize(2);
 	validateDistance();

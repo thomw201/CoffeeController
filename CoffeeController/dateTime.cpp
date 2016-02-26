@@ -1,4 +1,5 @@
 #include "dateTime.h"
+#include <algorithm>
 #include <string>
 #include <iostream>
 using namespace std;
@@ -34,7 +35,9 @@ int dateTime::getDay(){
 }
 /*returns string format of the datetime*/
 string dateTime::getTimeString(){
-	return ctime(&currentTime);
+	string time = ctime(&currentTime);
+	time.erase(std::remove(time.begin(), time.end(), '\n'), time.end());
+	return time;
 }
 
 string dateTime::getDayString(){
@@ -42,9 +45,8 @@ string dateTime::getDayString(){
 }
 //compares the given time to the local time, format "hhmm"
 bool dateTime::compareTime(int time){
-	//int currentHour = localTime->tm_hour;
-	//int currentMin = localTime->tm_min;
 	int currentTimeInt = localTime->tm_min + (localTime->tm_hour * 100);
+	//cout << "comparing " << currentTimeInt << " with " << time << endl;
 	if (currentTimeInt == time)
 	{
 		return true;

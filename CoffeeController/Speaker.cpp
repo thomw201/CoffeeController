@@ -17,6 +17,7 @@ Speaker::~Speaker()
 
 
 void Speaker::playReadytune() {
+	softToneCreate(speakerPin);
 	if (speakerIsEnabled)
 	{
 		int readyTune[23] = { 659, 659, 0, 659, 0, 523, 659, 0, 784, 0, 0, 0, 392, 0, 0, 0, 523, 0, 0, 392, 0, 0, 330 };
@@ -60,6 +61,7 @@ void Speaker::playStopTune() {
 }
 
 void Speaker::playErrorTune(LED led) {
+	softToneCreate(speakerPin);
 	if (speakerIsEnabled)
 	{
 		for (size_t i = 0; i < 3; i++)
@@ -76,6 +78,36 @@ void Speaker::playErrorTune(LED led) {
 	}
 }
 
+void Speaker::playOpenTune()
+{
+	softToneCreate(speakerPin);
+	if (speakerIsEnabled)
+	{
+		softToneWrite(speakerPin, 800);
+		delay(300);
+		softToneWrite(speakerPin, 200);
+		delay(100);
+		softToneStop(speakerPin);
+	}
+}
+
+void Speaker::playClosedTune(LED led)
+{
+	softToneCreate(speakerPin);
+	char colors[] = { 'C', 'C', 'G', 'G' };
+	if (speakerIsEnabled)
+	{
+		for (size_t i = 0; i < 3; i++)
+		{
+			led.setColor(colors[i]);
+			softToneWrite(speakerPin, 300*i);
+			delay(300);
+			led.LEDsOff();
+		}
+		softToneStop(speakerPin);
+	}
+	led.LEDsOff();
+}
 
 void Speaker::test() {
 
@@ -352,6 +384,11 @@ void Speaker::test() {
 }
 
 void Speaker::speakerEnabled(bool onoff) {
+	softToneWrite(speakerPin, 400);
+	delay(300);
+	softToneWrite(speakerPin, 100);
+	delay(600);
+	softToneStop(speakerPin);
 	speakerIsEnabled = onoff;
 }
 
